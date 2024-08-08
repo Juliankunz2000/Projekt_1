@@ -1,4 +1,5 @@
 import random
+answers = ["A", "B", "C", "D", "x"]
 
 questions_1 = ["Seine Mutter, die umarmt er - Seine Partnerin, die... ", 'Wen gewisse Umstände misstrauisch gemacht haben, der kommt zu der Vermutung „Hier ist etwas ...“?',
                 "Was machen nicht nur Musiker, wenn sie jemanden scharf zurechtweisen?",
@@ -53,6 +54,7 @@ def Runde():
 
     antwort = input("Gib hier deine Antwort ein: ")
 
+
     if antwort == "A" and (choice1 == right_answers_1[round - 1]):
         print("--------------------------------------------------------------------------------------------")
         print("Herzlichen Glückwunsch, die Antwort ist richtig!")
@@ -92,14 +94,189 @@ def Runde():
             print("--------------------------------------------------------------------------------------------")
             print("Herzlichen Glückwunsch, die Antwort ist richtig!")
             return "rm"
+        while antwort not in ["A", "B"]:
+            print("--------------------------------------------------------------------------------------------")
+            print("Ungültige Eingabe!")
+            print("--------------------------------------------------------------------------------------------")
+            print(f"Frage {round}: " + questions_1[round - 1])
+            print("--------------------------------------------------------------------------------------------")
+            print(f"A: {choice1}")
+            print(f"B: {choice2}")
+            print("--------------------------------------------------------------------------------------------")
+            print('Für den 50:50 Joker, gebe "x" ein!')
+            print("--------------------------------------------------------------------------------------------")
+            antwort = input("Gib hier deine Antwort ein: ")
+            if antwort == "A" and (choice1 == right_answers_1[round - 1]):
+                print("--------------------------------------------------------------------------------------------")
+                print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+                return "ro"
+            elif antwort == "B" and (choice2 == right_answers_1[round - 1]):
+                print("--------------------------------------------------------------------------------------------")
+                print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+                return "ro"
+            elif antwort == "C" and (choice3 == right_answers_1[round - 1]):
+                print("--------------------------------------------------------------------------------------------")
+                print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+                return "ro"
+            elif antwort == "D" and (choice4 == right_answers_1[round - 1]):
+                print("--------------------------------------------------------------------------------------------")
+                print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+                return "ro"
+            elif antwort not in ["A", "B"]:
+                pass
         else:
             print("--------------------------------------------------------------------------------------------")
             print("Die Antwort ist leider falsch!")
             return "v"
-    elif antwort == "x" and (Joker <= 0):
+    while antwort not in ["A", "B", "C", "D", "x"]:
         print("--------------------------------------------------------------------------------------------")
-        print("Du hast keinen Joker mehr!")
-        return "v"
+        print("Ungültige Eingabe!")
+        print("--------------------------------------------------------------------------------------------")
+        print(f"Frage {round}: " + questions_1[round - 1])
+        print("--------------------------------------------------------------------------------------------")
+        print(f"A: {choice1}")
+        print(f"B: {choice2}")
+        print(f"C: {choice3}")
+        print(f"D: {choice4}")
+        print("--------------------------------------------------------------------------------------------")
+        print('Für den 50:50 Joker, gebe "x" ein!')
+        print("--------------------------------------------------------------------------------------------")
+        antwort = input("Gib hier deine Antwort ein: ")
+        if antwort == "A" and (choice1 == right_answers_1[round - 1]):
+            print("--------------------------------------------------------------------------------------------")
+            print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+            return "ro"
+        elif antwort == "B" and (choice2 == right_answers_1[round - 1]):
+            print("--------------------------------------------------------------------------------------------")
+            print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+            return "ro"
+        elif antwort == "C" and (choice3 == right_answers_1[round - 1]):
+            print("--------------------------------------------------------------------------------------------")
+            print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+            return "ro"
+        elif antwort == "D" and (choice4 == right_answers_1[round - 1]):
+            print("--------------------------------------------------------------------------------------------")
+            print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+            return "ro"
+        elif antwort not in ["A", "B", "C", "D", "x"]:
+            pass
+        elif antwort == "x" and (Joker > 0):
+            possible_choices = [wrong_answers_1[round - 1][0], right_answers_1[round - 1]]
+            choice1 = random.choice(possible_choices)
+            index = possible_choices.index(choice1)
+            possible_choices.pop(index)
+            choice2 = random.choice(possible_choices)
+            index = possible_choices.index(choice2)
+            possible_choices.pop(index)
+            print("--------------------------------------------------------------------------------------------")
+            print(f"Frage {round}: " + questions_1[round - 1])
+            print("--------------------------------------------------------------------------------------------")
+            print(f"A: {choice1}")
+            print(f"B: {choice2}")
+            print("--------------------------------------------------------------------------------------------")
+            antwort = input("Gib hier deine Antwort ein: ")
+            if antwort == "A" and (choice1 == right_answers_1[round - 1]):
+                print("--------------------------------------------------------------------------------------------")
+                print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+                return "rm"
+            elif antwort == "B" and (choice2 == right_answers_1[round - 1]):
+                print("--------------------------------------------------------------------------------------------")
+                print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+                return "rm"
+            else:
+                print("--------------------------------------------------------------------------------------------")
+                print("Die Antwort ist leider falsch!")
+                return "v"
+
+            while antwort == "x" and (Joker <= 0):
+                print("--------------------------------------------------------------------------------------------")
+                print("Du hast keinen Joker mehr zur Verfügung!")
+                print("--------------------------------------------------------------------------------------------")
+                print(f"Frage {round}: " + questions_1[round - 1])
+                print("--------------------------------------------------------------------------------------------")
+                print(f"A: {choice1}")
+                print(f"B: {choice2}")
+                print(f"C: {choice3}")
+                print(f"D: {choice4}")
+                print("--------------------------------------------------------------------------------------------")
+                print('Für den 50:50 Joker, gebe "x" ein!')
+                print("--------------------------------------------------------------------------------------------")
+
+                antwort = input("Gib hier deine Antwort ein: ")
+
+                if antwort == "A" and (choice1 == right_answers_1[round - 1]):
+                    print(
+                        "--------------------------------------------------------------------------------------------")
+                    print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+                    return "ro"
+                elif antwort == "B" and (choice2 == right_answers_1[round - 1]):
+                    print(
+                        "--------------------------------------------------------------------------------------------")
+                    print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+                    return "ro"
+                elif antwort == "C" and (choice3 == right_answers_1[round - 1]):
+                    print(
+                        "--------------------------------------------------------------------------------------------")
+                    print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+                    return "ro"
+                elif antwort == "D" and (choice4 == right_answers_1[round - 1]):
+                    print(
+                        "--------------------------------------------------------------------------------------------")
+                    print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+                    return "ro"
+                elif antwort == "x":
+                    pass
+                else:
+                    print(
+                        "--------------------------------------------------------------------------------------------")
+                    print("Die Antwort ist leider falsch!")
+                    return "v"
+
+            else:
+                print("--------------------------------------------------------------------------------------------")
+                print("Die Antwort ist leider falsch!")
+                return "v"
+
+
+    while antwort == "x" and (Joker <= 0):
+        print("--------------------------------------------------------------------------------------------")
+        print("Du hast keinen Joker mehr zur Verfügung!")
+        print("--------------------------------------------------------------------------------------------")
+        print(f"Frage {round}: " + questions_1[round - 1])
+        print("--------------------------------------------------------------------------------------------")
+        print(f"A: {choice1}")
+        print(f"B: {choice2}")
+        print(f"C: {choice3}")
+        print(f"D: {choice4}")
+        print("--------------------------------------------------------------------------------------------")
+        print('Für den 50:50 Joker, gebe "x" ein!')
+        print("--------------------------------------------------------------------------------------------")
+
+        antwort = input("Gib hier deine Antwort ein: ")
+
+        if antwort == "A" and (choice1 == right_answers_1[round - 1]):
+            print("--------------------------------------------------------------------------------------------")
+            print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+            return "ro"
+        elif antwort == "B" and (choice2 == right_answers_1[round - 1]):
+            print("--------------------------------------------------------------------------------------------")
+            print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+            return "ro"
+        elif antwort == "C" and (choice3 == right_answers_1[round - 1]):
+            print("--------------------------------------------------------------------------------------------")
+            print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+            return "ro"
+        elif antwort == "D" and (choice4 == right_answers_1[round - 1]):
+            print("--------------------------------------------------------------------------------------------")
+            print("Herzlichen Glückwunsch, die Antwort ist richtig!")
+            return "ro"
+        elif antwort == "x":
+            pass
+        else:
+            print("--------------------------------------------------------------------------------------------")
+            print("Die Antwort ist leider falsch!")
+            return "v"
+
     else:
         print("--------------------------------------------------------------------------------------------")
         print("Die Antwort ist leider falsch!")
@@ -126,12 +303,13 @@ def process_result(result, round, Joker):
         return round, Joker
     elif result == "v":
         print("--------------------------------------------------------------------------------------------")
-        print("Du bist leider ausgeschieden! Deine Antwort war falsch :(")
+        print("Du bist leider ausgeschieden!:(")
+        exit()
     if (round == 15 and result != "v"):
         print("--------------------------------------------------------------------------------------------")
         print("Du hast den Jackpot geknackt! Du hast 1 Millionen Euro gewonnen!!!")
         print("----------------------------------------")
-        pass
+
 
 Ergebnis_1 = Runde()
 round, Joker = process_result(Ergebnis_1, round, Joker)
